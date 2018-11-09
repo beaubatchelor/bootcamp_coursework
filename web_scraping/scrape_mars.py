@@ -68,7 +68,7 @@ def scrape():
 
     facts_df = tabels_facts_url[0]
     facts_df.columns = ['info', 'values']
-    facts_df = facts_df.set_index('info')
+    facts_df = facts_df.to_dict('records')
 
     scraped_dict["facts_df"] = facts_df
 
@@ -95,6 +95,4 @@ def scrape():
 
     scraped_dict["hemisphere_image_urls"] = hemisphere_image_urls
 
-    return print(scraped_dict)
-scrape()
-
+    return scraped_dict
