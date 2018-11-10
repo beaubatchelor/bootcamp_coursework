@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body style="background-color: lightcoral">
+<body>
   <div class="container">
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
@@ -19,8 +19,92 @@
     </div>
   </div>
   
-  <div class="d-flex justify-content-center" >
-    <img id="featured_img" src={{mars.featured_image_url}}>
+  <div class="container-fluid" >
+    <div>
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <h2 style="text-decoration: underline">Featured Image</h2>
+        <img class="col-sm-12 col-md-12 col-lg-12" id="featured_img" src={{mars.featured_image_url}}>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <h2 style="text-decoration: underline">Weather On Mars</h1>
+        <p>{{mars.mars_weather}}</p>
+        <h2 style="text-decoration: underline">Recent News</h2>
+        <div >
+          <h3 style="font-size: 20px; font-style: italic; font-family: 'Times New Roman', Times, serif">{{mars.content_title}}</h3>
+          <p style="font-style: italic; font-family: 'Times New Roman', Times, serif">{{mars.article_teaser_body}}</p>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark" > 
+      <tr>
+        <th>Info</th>
+        <th>Values</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{mars.facts_df.0.info}}</td>
+        <td>{{mars.facts_df.0.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.1.info}}</td>
+        <td>{{mars.facts_df.1.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.2.info}}</td>
+        <td>{{mars.facts_df.2.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.3.info}}</td>
+        <td>{{mars.facts_df.3.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.4.info}}</td>
+        <td>{{mars.facts_df.4.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.5.info}}</td>
+        <td>{{mars.facts_df.5.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.6.info}}</td>
+        <td>{{mars.facts_df.6.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.7.info}}</td>
+        <td>{{mars.facts_df.7.info_values}}</td>
+      </tr>
+      <tr>
+        <td>{{mars.facts_df.8.info}}</td>
+        <td>{{mars.facts_df.8.info_values}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-6 col-md-6 col-lg-6">
+        <h2>{{mars.hemisphere_image_urls.0.title}}</h2>
+        <img class="col-sm-12 col-md-12 col-lg-12" src={{mars.hemisphere_image_urls.0.img_url}} alt={{mars.hemisphere_image_urls.0.title}}>
+      </div>
+      <div class="col col-sm-6 col-md-6 col-lg-6">
+        <h2>{{mars.hemisphere_image_urls.1.title}}</h2>
+        <img class="col-sm-12 col-md-12 col-lg-12" src={{mars.hemisphere_image_urls.1.img_url}} alt={{mars.hemisphere_image_urls.1.title}}>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col col-sm-6 col-md-6 col-lg-6">
+          <h2>{{mars.hemisphere_image_urls.2.title}}</h2>
+          <img class="col-sm-12 col-md-12 col-lg-12" src={{mars.hemisphere_image_urls.2.img_url}} alt={{mars.hemisphere_image_urls.2.title}}>
+        </div>
+        <div class="col col-sm-6 col-md-6 col-lg-6">
+          <h2>{{mars.hemisphere_image_urls.3.title}}</h2>
+          <img class="col-sm-12 col-md-12 col-lg-12" src={{mars.hemisphere_image_urls.3.img_url}} alt={{mars.hemisphere_image_urls.3.title}}>
+        </div>
+      </div>
   </div>
 
 </body>
