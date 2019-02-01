@@ -2,7 +2,7 @@
 
 ## Data and Cleaning
 I pulled in data from the same month in for 5 different years.
-![alt text](https://github.com/beaubatchelor/bootcamp_coursework/tree/master/Tableau/Screen%20Grabs/data_pic.PNG "Data_snap")
+![alt text](https://github.com/beaubatchelor/bootcamp_coursework/tree/master/Tableau/Screen%20Grabs/data_pic.PNG)
 
 Then I deleted unknown gender values because they made up a minor portion of the overall data.
 ![alt text](https://github.com/beaubatchelor/bootcamp_coursework/tree/master/Tableau/Screen%20Grabs/unknown_clean.PNG "unknown_clean")
