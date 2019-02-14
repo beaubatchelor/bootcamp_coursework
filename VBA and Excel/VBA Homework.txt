@@ -1,0 +1,110 @@
+Sub Summary():
+    'Making code true for all sheets
+    Dim ws As Worksheet
+    Dim r As Long
+    Dim LastRowAll As Long
+    Dim BrandName As String
+    Dim BrandTotal As Double
+    Dim TableRow As Long
+    Dim TickerName As String
+    Dim FirstLine As Long
+    Dim LastLine As Long
+
+    
+    'loop for all sheets
+    For Each ws In ThisWorkbook.Worksheets
+    ws.Activate
+    
+    'Variables
+    LastRowAll = ActiveSheet.UsedRange.Rows.Count
+    LastRowSummary = ActiveSheet.Cells(Rows.Count, "I").End(xlUp).Row
+    BrandTotal = 0
+    TableRow = 2
+    FirstLine = 2
+    LastLine = 1
+
+    'Naming headers
+    Cells(1, 9) = "Ticker"
+    Cells(1, 10) = "Yearly Change"
+    Cells(1, 11) = "Percent Change"
+    Cells(1, 12) = "Total Stock Volume"
+    Cells(1, 15) = "Ticker"
+    Cells(1, 16) = "Value"
+    Cells(2, 14) = "Greatest % Increase"
+    Cells(3, 14) = "Greatest % Decrease"
+    Cells(4, 14) = "Greatest Total Volume"
+    
+        
+        'First Loop
+        For r = 3 To LastRowAll
+        
+            'Sum Volume and List Tickers
+            If Cells(r, 1).Value = Cells(r - 1, 1).Value Then
+                BrandTotal = BrandTotal + Cells(r, 7)
+            ElseIf Cells(r, 1).Value <> Cells(r - 1, 1).Value Then
+                BrandName = Cells(r - 1, 1)
+                Range("L" & TableRow) = BrandTotal
+                Range("I" & TableRow) = BrandName
+                TableRow = TableRow + 1
+                BrandTotal = 0
+            End If
+
+        Next r
+    'Reset Variables
+    TableRow = 2
+    LastRowSummary = ActiveSheet.Cells(Rows.Count, "I").End(xlUp).Row
+
+        'Second Loop
+            For Name = 2 To LastRowSummary
+                TickerName = Cells(TableRow, 9).Value
+
+                    'Finding Yealry Change and Percent Change
+                    For t = 2 To LastRowAll
+
+                        If Cells(t, 1).Value = TickerName Then
+                            LastLine = LastLine + 1
+                        End If
+                        
+                    Next t
+
+                Cells(Name, 10).Value = Cells(LastLine, 6).Value - Cells(FirstLine, 3).Value
+                If Cells(FirstLine, 3) = 0 Then
+                    Cells(Name, 11).Value = 0
+                Else
+                    Cells(Name, 11).Value = (Cells(LastLine, 6).Value - Cells(FirstLine, 3).Value) / Cells(FirstLine, 3).Value
+                End If
+                FirstLine = LastLine + 1
+                TableRow = TableRow + 1
+            Next Name
+
+            'Variables
+            Highest_Percentage = WorksheetFunction.Max(Range("k2:k" & LastRowSummary))
+            Lowest_Percentage = WorksheetFunction.Min(Range("k2:k" & LastRowSummary))
+            Highest_Volume = WorksheetFunction.Max(Range("L2:L" & LastRowSummary))
+
+            For nameTwo = 2 To LastRowSummary
+                If Cells(nameTwo, 11) = Highest_Percentage Then
+                    Cells(2, 15) = Cells(nameTwo, 9)
+                    Cells(2, 16) = Cells(nameTwo, 11)
+                ElseIf Cells(nameTwo, 11) = Lowest_Percentage Then
+                    Cells(3, 15) = Cells(nameTwo, 9)
+                    Cells(3, 16) = Cells(nameTwo, 11)
+                End If
+
+                If Cells(nameTwo, 12) = Highest_Volume Then
+                    Cells(4, 15) = Cells(nameTwo, 9)
+                    Cells(4, 16) = Cells(nameTwo, 12)
+                End If
+
+                If Cells(nameTwo, 10) > 0 Then
+                    Cells(nameTwo, 10).Interior.ColorIndex = 4
+                Else
+                    Cells(nameTwo, 10).Interior.ColorIndex = 3
+                End If
+                
+            Next nameTwo
+            
+    Range("K2:K" & LastRowSummary).NumberFormat = "0.00%"
+    Next ws
+
+End Sub
