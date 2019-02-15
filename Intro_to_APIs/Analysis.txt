@@ -1,0 +1,7 @@
+1.) It is clear, from the Latitude vs. Max Temperature plot, that cities with latitudes further
+away from 0 had lower maximum temperatures. The line is clearly defined to support this obvious
+conclusion. 
+2.)Latitude had no clear correlation with cloud cover, humidity, or wind speed.
+3.)Cloud cover, while having no correlation with latitude, did show consistency over multiple
+cites. This tells me that either these cities are close enough together in longitude that they
+are experiencing the same cloud cover or the way in which cloudiness is measured it arbitrary.
